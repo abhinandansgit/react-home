@@ -200,10 +200,7 @@ export function Impact() {
           viewport={{ once: true }}
           className="mt-10 flex justify-center"
         >
-          <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-blue-50/50 border border-blue-100/50 text-blue-800 font-bold text-[10px] md:text-xs">
-            <Shield className="w-4 h-4 text-blue-600" />
-            Together, we create a <span className="text-blue-600 mx-1 underline underline-offset-4 font-black">safer digital world</span> for all.
-          </div>
+          
         </motion.div>
       </div>
     </section>
