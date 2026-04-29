@@ -48,7 +48,7 @@ export function TextShuffler({ phrases, interval = 4000 }) {
   };
 
   return (
-    <span className="inline-block w-full md:w-auto md:min-w-[500px] min-h-[1.5em] text-center md:whitespace-nowrap whitespace-normal transition-all duration-500 font-mono tracking-tighter">
+    <span className="inline-block w-full md:w-auto md:min-w-125 min-h-[1.5em] text-center md:whitespace-nowrap whitespace-normal transition-all duration-500 font-mono tracking-tighter">
       {displayText}
     </span>
   );

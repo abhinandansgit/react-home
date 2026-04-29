@@ -30,8 +30,8 @@ export function Technology() {
   return (
     <section className="py-8 md:py-16 bg-slate-900 text-white relative overflow-hidden">
       {/* Decorative background blur */}
-      <div className="absolute -top-64 -right-64 w-[600px] h-[600px] bg-indigo-600/10 rounded-full blur-[100px] pointer-events-none" />
-      <div className="absolute -bottom-64 -left-64 w-[600px] h-[600px] bg-blue-600/10 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute -top-64 -right-64 w-150 h-150 bg-indigo-600/10 rounded-full blur-[100px] pointer-events-none" />
+      <div className="absolute -bottom-64 -left-64 w-150 h-150 bg-blue-600/10 rounded-full blur-[100px] pointer-events-none" />
 
       <div className="container mx-auto px-6 md:px-12 relative z-10">
         <div className="flex flex-col lg:flex-row gap-8 md:gap-16 items-center">
@@ -39,7 +39,7 @@ export function Technology() {
             <h2 className="text-xs font-bold text-indigo-400 uppercase tracking-widest mb-1">Software & Innovation</h2>
             <h3 className="text-2xl md:text-4xl font-display font-bold mb-4 leading-tight">
               Advanced Digital <br />
-              <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-400 to-indigo-400">
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-400 to-indigo-400">
                 AI Solutions
               </span>
             </h3>
@@ -80,11 +80,11 @@ export function Technology() {
                 rotateX: [0, -3, 0]
               }}
               transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
-              className="relative aspect-video lg:aspect-square glass-dark rounded-[2rem] p-6 border border-white/10 flex items-center justify-center overflow-hidden max-w-sm mx-auto"
+              className="relative aspect-video lg:aspect-square glass-dark rounded-4xl p-6 border border-white/10 flex items-center justify-center overflow-hidden max-w-sm mx-auto"
             >
               {/* Animated "Code/Data" visual */}
               <div className="absolute inset-0 opacity-10 pointer-events-none">
-                <div className="w-full h-full bg-[size:20px_20px] bg-[radial-gradient(circle,rgba(255,255,255,0.2)_1px,transparent_1px)]" />
+                <div className="w-full h-full bg-size-[20px_20px] bg-[radial-gradient(circle,rgba(255,255,255,0.2)_1px,transparent_1px)]" />
               </div>
               
               <div className="relative z-10 text-center space-y-4">

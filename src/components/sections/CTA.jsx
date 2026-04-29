@@ -7,7 +7,7 @@ export function CTA() {
     <section className="py-12 md:py-20 relative overflow-hidden">
       {/* Background with gradient and noise */}
       <div className="absolute inset-0 bg-indigo-600">
-        <div className="absolute inset-0 bg-gradient-to-br from-indigo-700 via-indigo-600 to-blue-600" />
+        <div className="absolute inset-0 bg-linear-to-br from-indigo-700 via-indigo-600 to-blue-600" />
         <div className="absolute inset-0 bg-[url('https://grainy-gradients.vercel.app/noise.svg')] opacity-20 mix-blend-overlay" />
         
         {/* Animated circle */}
@@ -17,7 +17,7 @@ export function CTA() {
             opacity: [0.2, 0.4, 0.2],
           }}
           transition={{ duration: 8, repeat: Infinity, ease: "easeInOut" }}
-          className="absolute -top-32 -left-32 w-[600px] h-[600px] bg-white/20 rounded-full blur-[100px]"
+          className="absolute -top-32 -left-32 w-150 h-150 bg-white/20 rounded-full blur-[100px]"
         />
       </div>
 
