@@ -38,7 +38,7 @@ export function AwarenessTicker() {
           <HelpCircle className="w-3.5 h-3.5" />
         </button>
         <a 
-          href="#contact" 
+          href="https://abhi-crccf.netlify.app/" 
           className="flex items-center gap-2 px-3 py-1 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-all shadow-lg shadow-blue-600/20 active:scale-95 group"
         >
           <Globe className="w-3 h-3 group-hover:rotate-12 transition-transform" />
