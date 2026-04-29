@@ -62,7 +62,7 @@ export function HeroInteractive() {
             : "bg-white/5 backdrop-blur-md border border-white/10 text-white hover:border-indigo-500/50"
         )}
       >
-        <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
+        <div className="absolute inset-0 bg-linear-to-br from-indigo-500/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
         <motion.div
           animate={{ rotate: isOpen ? 180 : 0 }}
           transition={{ type: "spring", stiffness: 200, damping: 15 }}
@@ -96,7 +96,7 @@ export function HeroInteractive() {
               <div className="flex flex-col items-center gap-3 group cursor-pointer">
                 {/* Node Line Connector */}
                 <div 
-                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[1px] h-32 bg-gradient-to-t from-indigo-500/50 to-transparent origin-bottom -z-10 opacity-20" 
+                  className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-px h-32 bg-linear-to-t from-indigo-500/50 to-transparent origin-bottom -z-10 opacity-20" 
                   style={{ transform: `rotate(${index * (360 / total)}deg)` }} 
                 />
 

@@ -1,232 +1,208 @@
 import React from 'react';
 import { motion } from 'framer-motion';
-import { Users, Presentation, Lightbulb, Heart, ArrowRight, Shield, Zap, Globe } from 'lucide-react';
+import { Shield, Zap, ArrowRight, UserPlus, GraduationCap, Building2 } from 'lucide-react';
+import { cn } from '../../lib/utils';
 import { Counter } from '../ui/Counter';
+
+// Import the generated 3D assets from local assets directory
+import megaphone3d from '../../assets/3d-icons/megaphone.png';
+import laptop3d from '../../assets/3d-icons/laptop.png';
+import notepad3d from '../../assets/3d-icons/notepad.png';
+import heart3d from '../../assets/3d-icons/heart-hands.png';
+import shield3d from '../../assets/3d-icons/shield.png';
 
 const activities = [
   {
     title: 'Awareness Campaigns',
     metric: '1,200+',
-    description: 'Empowering communities through widespread digital literacy and cyber safety initiatives across schools and rural sectors.',
-    icon: Users,
-    gradient: 'from-blue-500 to-cyan-400',
-    iconBg: 'bg-blue-50',
-    iconColor: 'text-blue-600'
+    description: 'Empowering communities through widespread digital literacy and cyber safety initiatives.',
+    image: megaphone3d,
+    color: 'text-blue-600',
+    bgColor: 'bg-blue-50',
+    accentColor: 'blue'
   },
   {
     title: 'Workshops',
     metric: '500+',
-    description: 'Immersive technical training sessions designed for working professionals, investigators, and tech enthusiasts.',
-    icon: Presentation,
-    gradient: 'from-indigo-500 to-purple-400',
-    iconBg: 'bg-indigo-50',
-    iconColor: 'text-indigo-600'
+    description: 'Immersive technical training sessions designed for working professionals and tech enthusiasts.',
+    image: laptop3d,
+    color: 'text-indigo-600',
+    bgColor: 'bg-indigo-50',
+    accentColor: 'indigo'
   },
   {
     title: 'Research Papers',
     metric: '45+',
-    description: 'Leading-edge publications in global cybersecurity journals, focusing on AI-driven threat intelligence.',
-    icon: Lightbulb,
-    gradient: 'from-amber-500 to-orange-400',
-    iconBg: 'bg-amber-50',
-    iconColor: 'text-amber-600'
+    description: 'Leading-edge publications in global journals, focusing on AI-driven threat intelligence.',
+    image: notepad3d,
+    color: 'text-amber-600',
+    bgColor: 'bg-amber-50',
+    accentColor: 'amber'
   },
   {
     title: 'Victims Assisted',
     metric: '5,000+',
-    description: 'Providing critical digital forensic support and pro-bono legal guidance to individuals targeted by cybercriminals.',
-    icon: Heart,
-    gradient: 'from-rose-500 to-pink-400',
-    iconBg: 'bg-rose-50',
-    iconColor: 'text-rose-600'
+    description: 'Providing critical digital forensic support and pro-bono legal guidance to victims.',
+    image: heart3d,
+    color: 'text-rose-600',
+    bgColor: 'bg-rose-50',
+    accentColor: 'rose'
   },
 ];
 
 export function Impact() {
-  const containerVariants = {
-    hidden: { opacity: 0 },
-    visible: {
-      opacity: 1,
-      transition: {
-        staggerChildren: 0.15
-      }
-    }
-  };
-
-  const itemVariants = {
-    hidden: { opacity: 0, y: 30 },
-    visible: {
-      opacity: 1,
-      y: 0,
-      transition: { duration: 0.6, ease: "easeOut" }
-    }
-  };
-
   return (
-    <section id="impact" className="py-24 bg-white relative overflow-hidden">
-      {/* Abstract Background Elements */}
-      <div className="absolute top-0 right-0 w-1/2 h-1/2 bg-indigo-50/50 rounded-full blur-[120px] -z-10 translate-x-1/4 -translate-y-1/4" />
-      <div className="absolute bottom-0 left-0 w-1/3 h-1/3 bg-blue-50/50 rounded-full blur-[100px] -z-10 -translate-x-1/4 translate-y-1/4" />
+    <section id="impact" className="py-12 md:py-16 bg-white relative overflow-hidden">
+      {/* Background decoration */}
+      <div className="absolute top-0 right-0 w-150 h-150 bg-blue-50/20 rounded-full blur-[120px] -z-10 translate-x-1/2 -translate-y-1/4" />
+      <div className="absolute bottom-0 left-0 w-100 h-100 bg-indigo-50/30 rounded-full blur-[100px] -z-10 -translate-x-1/2 translate-y-1/2" />
 
-      <div className="container mx-auto px-6 md:px-12">
-        <div className="flex flex-col lg:flex-row items-end justify-between mb-16 gap-8">
-          <div className="max-w-2xl text-left">
+      <div className="max-w-360 mx-auto px-4 md:px-10">
+        {/* Header Section */}
+        <div className="flex flex-col lg:flex-row items-center justify-between mb-8 gap-10">
+          <div className="flex-1 max-w-2xl">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
               viewport={{ once: true }}
-              className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-indigo-50 border border-indigo-100 text-indigo-600 font-bold text-xs uppercase tracking-widest mb-4"
+              className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-blue-50 border border-blue-100 text-blue-600 font-bold text-xs uppercase tracking-widest mb-6"
             >
               <Zap className="w-3 h-3" />
-              Impact Report
+              Our Activities
             </motion.div>
+            
             <motion.h2 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-4xl md:text-6xl font-display font-black text-slate-900 leading-[1.1] mb-6"
+              className="text-2xl md:text-5xl font-display font-black text-slate-900 leading-tight mb-4"
             >
-              Real-World Impact, <br />
-              <span className="text-transparent bg-clip-text bg-linear-to-r from-indigo-600 to-blue-500">
-                Driven by Action.
-              </span>
+              Digital Safety & <br />
+              <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-600 to-indigo-600">Community Engagement</span>
             </motion.h2>
+            
             <motion.p 
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              transition={{ delay: 0.2 }}
-              className="text-lg text-slate-600 leading-relaxed max-w-xl"
+              transition={{ delay: 0.1 }}
+              className="text-sm md:text-base text-slate-600 leading-relaxed mb-6 max-w-lg"
             >
-              Our mission extends beyond theory. We are on the front lines of digital safety, 
-              providing tangible solutions and building a more secure ecosystem for everyone.
+              We continuously work to promote innovation, knowledge-sharing, and cyber safety 
+              across diverse communities through structured initiatives.
             </motion.p>
-          </div>
-          
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            whileInView={{ opacity: 1, scale: 1 }}
-            viewport={{ once: true }}
-            className="hidden lg:flex items-center gap-4 p-4 rounded-3xl bg-slate-50 border border-slate-100 shadow-sm"
-          >
-            <div className="flex -space-x-3">
-              {[1, 2, 3, 4].map((i) => (
-                <div key={i} className="w-10 h-10 rounded-full border-2 border-white bg-slate-200 overflow-hidden shadow-sm">
-                  <img src={`https://i.pravatar.cc/150?u=${i + 10}`} alt="User" />
-                </div>
+
+            {/* Quick Stats/Badges */}
+            <div className="flex flex-wrap gap-6">
+              {[
+                { label: 'Empowering', sub: 'Safer Communities', icon: UserPlus },
+                { label: 'Educating', sub: 'Every Generation', icon: GraduationCap },
+                { label: 'Building', sub: 'A Safer Tomorrow', icon: Building2 },
+              ].map((item, i) => (
+                <motion.div
+                  key={i}
+                  initial={{ opacity: 0, y: 10 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true }}
+                  transition={{ delay: 0.2 + (i * 0.1) }}
+                  className="flex items-center gap-3"
+                >
+                  <div className="w-10 h-10 rounded-xl bg-slate-50 flex items-center justify-center text-blue-600 border border-slate-100 shadow-sm">
+                    <item.icon className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <p className="text-[11px] font-black text-slate-900 uppercase leading-none mb-1">{item.label}</p>
+                    <p className="text-[10px] text-slate-500 font-bold">{item.sub}</p>
+                  </div>
+                </motion.div>
               ))}
-              <div className="w-10 h-10 rounded-full border-2 border-white bg-indigo-600 flex items-center justify-center text-white text-[10px] font-bold shadow-sm">
-                +15k
-              </div>
             </div>
-            <div className="pr-4">
-              <p className="text-xs font-black text-slate-900 uppercase">Active Community</p>
-              <p className="text-[10px] text-slate-500 font-bold">Volunteers & Researchers</p>
-            </div>
+          </div>
+
+          <motion.div
+            initial={{ opacity: 0, scale: 0.8, rotate: 5 }}
+            whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.8, type: "spring" }}
+            className="flex-1 max-w-lg relative"
+          >
+            {/* Main 3D Shield */}
+            <motion.img
+              src={shield3d}
+              alt="Cyber Security Shield"
+              animate={{ y: [0, -15, 0] }}
+              transition={{ duration: 6, repeat: Infinity, ease: "easeInOut" }}
+              className="w-[85%] md:w-full h-auto mx-auto drop-shadow-[0_20px_50px_rgba(59,130,246,0.3)]"
+            />
+            
+            {/* Orbiting particles/glows */}
+            <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[120%] h-[120%] bg-[radial-gradient(circle_at_center,rgba(59,130,246,0.1)_0%,transparent_70%)] -z-10" />
           </motion.div>
         </div>
 
-        <motion.div 
-          variants={containerVariants}
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true }}
-          className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6"
-        >
+        {/* Activity Cards Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
           {activities.map((activity, index) => (
             <motion.div
               key={activity.title}
-              variants={itemVariants}
-              whileHover={{ y: -10 }}
-              className="relative p-8 rounded-[2.5rem] bg-white border border-slate-100 shadow-sm hover:shadow-2xl hover:shadow-indigo-500/10 transition-all duration-500 group overflow-hidden"
+              initial={{ opacity: 0, y: 40 }}
+              whileInView={{ opacity: 1, y: 0 }}
+              viewport={{ once: true }}
+              transition={{ duration: 0.6, delay: index * 0.1 }}
+              whileHover={{ y: -12 }}
+              className="relative p-8 rounded-[3rem] bg-white border border-slate-100 shadow-sm hover:shadow-2xl hover:shadow-blue-500/10 transition-all duration-500 group overflow-hidden"
             >
-              {/* Subtle hover gradient background */}
-              <div className={`absolute inset-0 bg-linear-to-br ${activity.gradient} opacity-0 group-hover:opacity-[0.03] transition-opacity duration-500`} />
-              
-              <div className={`w-14 h-14 rounded-2xl ${activity.iconBg} ${activity.iconColor} flex items-center justify-center mb-8 group-hover:scale-110 transition-all duration-500 relative z-10`}>
-                <activity.icon className="w-7 h-7" />
+              <div className={cn("w-14 h-14 rounded-2xl flex items-center justify-center mb-6 shadow-sm transition-transform group-hover:scale-110 duration-500", activity.bgColor)}>
+                 <Shield className={cn("w-7 h-7", activity.color)} />
               </div>
               
               <div className="relative z-10">
                 <h4 className="text-4xl font-display font-black text-slate-900 mb-2 flex items-baseline gap-1">
                   <Counter value={activity.metric} delay={index * 0.1} />
                 </h4>
-                <p className="text-lg font-bold text-slate-800 mb-4 group-hover:text-indigo-600 transition-colors">{activity.title}</p>
-                <p className="text-slate-500 text-sm leading-relaxed mb-6">
+                <p className="text-lg font-bold text-slate-800 mb-4 group-hover:text-blue-600 transition-colors">{activity.title}</p>
+                <p className="text-slate-500 text-xs leading-relaxed mb-6">
                   {activity.description}
                 </p>
-                <div className="flex items-center gap-2 text-xs font-black text-indigo-600 uppercase tracking-widest opacity-0 group-hover:opacity-100 transition-all translate-y-2 group-hover:translate-y-0 cursor-pointer">
-                  Learn More <ArrowRight className="w-3 h-3" />
-                </div>
+                
+                <motion.div 
+                  whileHover={{ x: 5 }}
+                  className={cn("w-10 h-10 rounded-full flex items-center justify-center transition-colors cursor-pointer", activity.bgColor)}
+                >
+                  <ArrowRight className={cn("w-5 h-5", activity.color)} />
+                </motion.div>
               </div>
-              
-              {/* Decorative background number */}
-              <span className="absolute -bottom-4 -right-4 text-9xl font-black text-slate-100/30 select-none group-hover:text-indigo-500/5 transition-colors duration-500 leading-none">
-                {index + 1}
-              </span>
+
+              {/* 3D Icon Overlay */}
+              <motion.img
+                src={activity.image}
+                alt={activity.title}
+                animate={{ 
+                  y: [0, -10, 0],
+                  rotate: [0, 2, 0]
+                }}
+                transition={{ 
+                  duration: 4, 
+                  repeat: Infinity, 
+                  ease: "easeInOut",
+                  delay: index * 0.5
+                }}
+                className="absolute -bottom-2 -right-2 w-28 h-28 md:w-32 md:h-32 object-contain group-hover:scale-110 transition-transform duration-700 select-none pointer-events-none opacity-90 group-hover:opacity-100"
+              />
             </motion.div>
           ))}
-        </motion.div>
-        
-        <motion.div
-          initial={{ opacity: 0, y: 50 }}
-          whileInView={{ opacity: 1, y: 0 }}
-          viewport={{ once: true }}
-          transition={{ duration: 0.8 }}
-          className="mt-20 relative rounded-[3rem] overflow-hidden bg-slate-900 p-8 md:p-16 shadow-3xl group"
-        >
-          {/* Animated Background Mesh */}
-          <div className="absolute inset-0 opacity-20 group-hover:opacity-30 transition-opacity duration-700">
-             <div className="absolute top-0 left-0 w-full h-full bg-[radial-gradient(circle_at_20%_30%,#4f46e5_0%,transparent_50%)]" />
-             <div className="absolute bottom-0 right-0 w-full h-full bg-[radial-gradient(circle_at_80%_70%,#0ea5e9_0%,transparent_50%)]" />
-          </div>
+        </div>
 
-          <div className="grid lg:grid-cols-2 gap-12 items-center relative z-10">
-            <div>
-              <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-white/10 backdrop-blur-md border border-white/10 text-white font-bold text-[10px] uppercase tracking-widest mb-6">
-                <Globe className="w-3 h-3 text-cyan-400" />
-                Global Network
-              </div>
-              <h3 className="text-3xl md:text-5xl font-display font-black text-white mb-6 leading-tight">
-                Join our mission to <br />
-                <span className="text-cyan-400">Secure the Future.</span>
-              </h3>
-              <p className="text-indigo-100/80 text-lg mb-8 leading-relaxed max-w-md">
-                We believe in the power of collective intelligence. Partner with us to build 
-                a safer digital world through research and collaboration.
-              </p>
-              <div className="flex flex-col sm:flex-row gap-4">
-                <button className="px-8 py-4 rounded-2xl bg-indigo-600 text-white font-black uppercase tracking-widest text-xs hover:bg-indigo-500 transition-all shadow-xl shadow-indigo-900/50 active:scale-95">
-                  Become a Volunteer
-                </button>
-                <button className="px-8 py-4 rounded-2xl bg-white/5 backdrop-blur-md border border-white/10 text-white font-black uppercase tracking-widest text-xs hover:bg-white/10 transition-all active:scale-95">
-                  Partner With Us
-                </button>
-              </div>
-            </div>
-            
-            <div className="hidden lg:block relative">
-              <div className="grid grid-cols-2 gap-4">
-                <motion.div 
-                   animate={{ y: [0, -10, 0] }} 
-                   transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-                   className="p-6 rounded-3xl bg-white/5 backdrop-blur-xl border border-white/10"
-                >
-                  <Shield className="w-8 h-8 text-indigo-400 mb-4" />
-                  <p className="text-xl font-black text-white">Forensics</p>
-                  <p className="text-xs text-indigo-200/60 font-bold">Post-Incident Support</p>
-                </motion.div>
-                <motion.div 
-                   animate={{ y: [0, 10, 0] }} 
-                   transition={{ duration: 5, repeat: Infinity, ease: "easeInOut" }}
-                   className="p-6 rounded-3xl bg-indigo-600/20 backdrop-blur-xl border border-indigo-500/20 mt-8"
-                >
-                  <Users className="w-8 h-8 text-cyan-400 mb-4" />
-                  <p className="text-xl font-black text-white">Education</p>
-                  <p className="text-xs text-indigo-200/60 font-bold">Skills & Training</p>
-                </motion.div>
-              </div>
-            </div>
+        {/* Footer Text */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          whileInView={{ opacity: 1 }}
+          viewport={{ once: true }}
+          className="mt-10 flex justify-center"
+        >
+          <div className="inline-flex items-center gap-3 px-6 py-3 rounded-full bg-blue-50/50 border border-blue-100/50 text-blue-800 font-bold text-[10px] md:text-xs">
+            <Shield className="w-4 h-4 text-blue-600" />
+            Together, we create a <span className="text-blue-600 mx-1 underline underline-offset-4 font-black">safer digital world</span> for all.
           </div>
         </motion.div>
       </div>
