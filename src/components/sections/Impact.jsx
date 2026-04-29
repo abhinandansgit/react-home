@@ -52,15 +52,15 @@ const activities = [
 
 export function Impact() {
   return (
-    <section id="impact" className="py-12 md:py-16 bg-white relative overflow-hidden">
+    <section id="impact" className="py-6 md:py-10 bg-white relative overflow-hidden">
       {/* Background decoration */}
       <div className="absolute top-0 right-0 w-150 h-150 bg-blue-50/20 rounded-full blur-[120px] -z-10 translate-x-1/2 -translate-y-1/4" />
       <div className="absolute bottom-0 left-0 w-100 h-100 bg-indigo-50/30 rounded-full blur-[100px] -z-10 -translate-x-1/2 translate-y-1/2" />
 
       <div className="max-w-360 mx-auto px-4 md:px-10">
         {/* Header Section */}
-        <div className="flex flex-col lg:flex-row items-center justify-between mb-8 gap-10">
-          <div className="flex-1 max-w-2xl">
+        <div className="flex flex-col lg:flex-row items-center justify-between mb-4 lg:mb-8 gap-6 lg:gap-10">
+          <div className="flex-1 max-w-2xl text-center lg:text-left">
             <motion.div
               initial={{ opacity: 0, x: -20 }}
               whileInView={{ opacity: 1, x: 0 }}
@@ -75,7 +75,7 @@ export function Impact() {
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
-              className="text-2xl md:text-5xl font-display font-black text-slate-900 leading-tight mb-4"
+              className="text-2xl md:text-5xl font-display font-black text-slate-900 leading-tight mb-2"
             >
               Digital Safety & <br />
               <span className="text-transparent bg-clip-text bg-linear-to-r from-blue-600 to-indigo-600">Community Engagement</span>
@@ -86,14 +86,14 @@ export function Impact() {
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ delay: 0.1 }}
-              className="text-sm md:text-base text-slate-600 leading-relaxed mb-6 max-w-lg"
+              className="text-sm md:text-base text-slate-600 leading-relaxed mb-4 max-w-lg mx-auto lg:mx-0"
             >
               We continuously work to promote innovation, knowledge-sharing, and cyber safety 
               across diverse communities through structured initiatives.
             </motion.p>
 
             {/* Quick Stats/Badges */}
-            <div className="flex flex-wrap gap-6">
+            <div className="flex flex-wrap gap-4 justify-center lg:justify-start mb-6 lg:mb-0">
               {[
                 { label: 'Empowering', sub: 'Safer Communities', icon: UserPlus },
                 { label: 'Educating', sub: 'Every Generation', icon: GraduationCap },
@@ -124,7 +124,7 @@ export function Impact() {
             whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, type: "spring" }}
-            className="flex-1 max-w-lg relative"
+            className="flex-1 max-w-70 md:max-w-lg relative mb-8 lg:mb-0"
           >
             {/* Main 3D Shield */}
             <motion.img
@@ -187,7 +187,7 @@ export function Impact() {
                   ease: "easeInOut",
                   delay: index * 0.5
                 }}
-                className="absolute -bottom-2 -right-2 w-28 h-28 md:w-32 md:h-32 object-contain group-hover:scale-110 transition-transform duration-700 select-none pointer-events-none opacity-90 group-hover:opacity-100"
+                className="absolute -bottom-1 -right-1 w-24 h-24 md:w-32 md:h-32 object-contain group-hover:scale-110 transition-transform duration-700 select-none pointer-events-none opacity-90 group-hover:opacity-100"
               />
             </motion.div>
           ))}
@@ -198,7 +198,7 @@ export function Impact() {
           initial={{ opacity: 0 }}
           whileInView={{ opacity: 1 }}
           viewport={{ once: true }}
-          className="mt-10 flex justify-center"
+          className="mt-6 flex justify-center"
         >
           
         </motion.div>
