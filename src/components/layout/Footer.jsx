@@ -12,6 +12,8 @@ import {
   Phone, 
   MapPin 
 } from 'lucide-react';
+import logo from '/src/assets/logo.png';
+
 
 export function Footer() {
   return (
@@ -22,7 +24,7 @@ export function Footer() {
           <div className="lg:col-span-4 space-y-4">
             <div className="flex flex-col items-start gap-4">
               <img 
-                src="/src/assets/logo.png" 
+                src={logo} 
                 alt="CRCCF Logo" 
                 className="w-16 h-16 object-contain" 
               />

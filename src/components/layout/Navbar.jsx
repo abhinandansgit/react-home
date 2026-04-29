@@ -2,6 +2,7 @@ import React, { useState, useEffect, useRef } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { Shield, Menu, X, ChevronRight, Bell, ChevronDown, Search } from 'lucide-react';
 import { cn } from '../../lib/utils';
+import logo from '/src/assets/logo.png';
 
 const navLinks = [
   { name: 'Home', href: '#' },
@@ -71,7 +72,7 @@ export function Navbar() {
         {/* Logo Branding */}
         <div className="flex items-center gap-2 md:gap-3 group cursor-pointer">
           <img 
-            src="/src/assets/logo.png" 
+            src={logo} 
             alt="CRCCF Logo" 
             className="w-8 h-8 md:w-12 md:h-12 object-contain group-hover:scale-110 transition-transform duration-500" 
           />
