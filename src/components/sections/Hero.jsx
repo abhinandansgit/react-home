@@ -4,6 +4,9 @@ import { ChevronRight, ShieldCheck, Lock } from 'lucide-react';
 import { HeroInteractive } from '../ui/HeroInteractive';
 import { TextShuffler } from '../ui/TextShuffler';
 import { ExpandableText } from '../ui/ExpandableText';
+import { NetworkBackground } from '../ui/NetworkBackground';
+import { BinaryRain } from '../ui/BinaryRain';
+import { TiltCard } from '../ui/TiltCard';
 import heroBg from '../../assets/hero-bg.png';
 
 export function Hero() {
@@ -21,9 +24,11 @@ export function Hero() {
         <img
           src={heroBg}
           alt="Tech Background"
-          className="w-full h-full object-cover opacity-40"
+          className="w-full h-full object-cover opacity-20"
         />
         <div className="absolute inset-0 bg-linear-to-b from-slate-900/80 via-slate-900/60 to-slate-900/80" />
+        <NetworkBackground />
+        <BinaryRain />
       </div>
 
       <div className="container relative z-10 mx-auto px-6 md:px-12 text-center">
@@ -87,32 +92,44 @@ export function Hero() {
         {/* Floating Abstract UI Elements to give the "Startup/Gov hybrid" feel */}
         <motion.div
           initial={{ opacity: 0, x: -50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1, delay: 0.5 }}
-          className="hidden lg:flex absolute top-1/4 left-10 glass p-4 rounded-2xl items-center gap-4"
+          animate={{ opacity: 1, x: 0, y: [0, -15, 0] }}
+          transition={{ 
+            opacity: { duration: 1, delay: 0.5 },
+            x: { duration: 1, delay: 0.5 },
+            y: { duration: 4, repeat: Infinity, ease: "easeInOut", delay: 1.5 }
+          }}
+          className="hidden lg:flex absolute top-1/4 left-10 z-20"
         >
-          <div className="bg-emerald-100 p-3 rounded-lg text-emerald-600">
-            <ShieldCheck className="w-6 h-6" />
-          </div>
-          <div className="text-left">
-            <p className="text-sm font-bold text-slate-900">Secure Systems</p>
-            <p className="text-xs text-slate-500">Government Grade</p>
-          </div>
+          <TiltCard className="glass p-4 rounded-2xl items-center gap-4 flex shadow-xl shadow-indigo-900/20 hover:shadow-indigo-500/30">
+            <div className="bg-emerald-100 p-3 rounded-lg text-emerald-600">
+              <ShieldCheck className="w-6 h-6" />
+            </div>
+            <div className="text-left">
+              <p className="text-sm font-bold text-slate-900">Secure Systems</p>
+              <p className="text-xs text-slate-500">Government Grade</p>
+            </div>
+          </TiltCard>
         </motion.div>
 
         <motion.div
           initial={{ opacity: 0, x: 50 }}
-          animate={{ opacity: 1, x: 0 }}
-          transition={{ duration: 1, delay: 0.7 }}
-          className="hidden lg:flex absolute bottom-1/4 right-10 glass p-4 rounded-2xl items-center gap-4"
+          animate={{ opacity: 1, x: 0, y: [0, 15, 0] }}
+          transition={{ 
+            opacity: { duration: 1, delay: 0.7 },
+            x: { duration: 1, delay: 0.7 },
+            y: { duration: 4.5, repeat: Infinity, ease: "easeInOut", delay: 1.7 }
+          }}
+          className="hidden lg:flex absolute bottom-1/4 right-10 z-20"
         >
-          <div className="bg-blue-100 p-3 rounded-lg text-blue-600">
-            <Lock className="w-6 h-6" />
-          </div>
-          <div className="text-left">
-            <p className="text-sm font-bold text-slate-900">Data Protection</p>
-            <p className="text-xs text-slate-500">100% Encrypted</p>
-          </div>
+          <TiltCard className="glass p-4 rounded-2xl items-center gap-4 flex shadow-xl shadow-blue-900/20 hover:shadow-blue-500/30">
+            <div className="bg-blue-100 p-3 rounded-lg text-blue-600">
+              <Lock className="w-6 h-6" />
+            </div>
+            <div className="text-left">
+              <p className="text-sm font-bold text-slate-900">Data Protection</p>
+              <p className="text-xs text-slate-500">100% Encrypted</p>
+            </div>
+          </TiltCard>
         </motion.div>
 
       </div>

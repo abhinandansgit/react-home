@@ -4,7 +4,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 const binaryChars = '01';
 const specialChars = '!@#$%^&*()_+<>?';
 
-export function TextShuffler({ phrases, interval = 4000 }) {
+export function TextShuffler({ phrases, interval = 5000 }) {
   const [index, setIndex] = useState(0);
   const [displayText, setDisplayText] = useState(phrases[0]);
 

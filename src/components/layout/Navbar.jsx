@@ -61,11 +61,11 @@ export function Navbar() {
   }, [isNotificationsOpen]);
 
   return (
-    <header
+    <>
+      <header
       className={cn(
-        'fixed left-0 right-0 z-50 transition-all duration-500 border-b border-transparent',
-        isScrolled ? 'glass py-2 shadow-xl border-slate-100' : 'bg-transparent py-3 md:py-5',
-        'top-8'
+        'relative z-50 transition-all duration-500 border-b border-transparent w-full',
+        isScrolled ? 'glass py-2 shadow-xl border-slate-100' : 'bg-transparent py-3 md:py-5'
       )}
     >
       <div className="container mx-auto px-4 md:px-12 flex items-center justify-between">
@@ -200,74 +200,110 @@ export function Navbar() {
           
           <a
             href="#report"
-            className="px-5 py-2.5 bg-[#FF0000] hover:bg-red-700 text-white rounded-lg text-[11px] font-extrabold uppercase tracking-wider transition-all shadow-[0_0_15px_rgba(255,0,0,0.3)] hover:shadow-[0_0_25px_rgba(255,0,0,0.5)] active:scale-95"
+            className="relative overflow-hidden group px-5 py-2.5 bg-[#FF0000] hover:bg-red-700 text-white rounded-lg text-[11px] font-extrabold uppercase tracking-wider transition-all shadow-[0_0_15px_rgba(255,0,0,0.3)] hover:shadow-[0_0_25px_rgba(255,0,0,0.5)] active:scale-95 flex items-center justify-center"
           >
-            Report Crime
+            <span className="relative z-10">Report Crime</span>
+            <div className="absolute inset-0 -translate-x-full animate-shimmer bg-linear-to-r from-transparent via-white/40 to-transparent w-1/2" />
           </a>
         </div>
 
-        {/* Mobile Menu Button */}
-        <button
-          className={cn(
-            "lg:hidden w-10 h-10 md:w-12 md:h-12 rounded-xl flex items-center justify-center transition-all duration-300 border",
-            isScrolled 
-              ? "text-slate-900 border-slate-200 hover:bg-slate-50" 
-              : "text-white border-white/20 bg-white/5 backdrop-blur-md hover:bg-white/10 shadow-lg shadow-black/20"
-          )}
-          onClick={() => setIsOpen(!isOpen)}
-        >
-          {isOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
-        </button>
+        {/* Mobile Actions */}
+        <div className="flex lg:hidden items-center gap-2 md:gap-3">
+          <a
+            href="#report"
+            className="relative overflow-hidden group px-4 py-2 bg-[#FF0000] text-white rounded-lg text-[10px] font-black uppercase tracking-wider transition-all shadow-lg shadow-red-600/30 active:scale-95 flex items-center justify-center"
+          >
+            <span className="relative z-10">Report Crime</span>
+            <div className="absolute inset-0 -translate-x-full animate-shimmer bg-linear-to-r from-transparent via-white/30 to-transparent w-1/2" />
+          </a>
+          <button
+            className={cn(
+              "w-9 h-9 md:w-11 md:h-11 rounded-xl flex items-center justify-center transition-all duration-300 border",
+              isScrolled 
+                ? "text-slate-900 border-slate-200 hover:bg-slate-50" 
+                : "text-white border-white/20 bg-white/5 backdrop-blur-md hover:bg-white/10 shadow-lg shadow-black/20"
+            )}
+            onClick={() => setIsOpen(!isOpen)}
+          >
+            {isOpen ? <X className="w-5 h-5 md:w-6 md:h-6" /> : <Menu className="w-5 h-5 md:w-6 md:h-6" />}
+          </button>
+        </div>
       </div>
 
-      {/* Mobile Nav Overlay */}
-      <AnimatePresence>
-        {isOpen && (
+    </header>
+    {/* Mobile Nav Overlay */}
+    <AnimatePresence>
+      {isOpen && (
+        <>
+          {/* Backdrop */}
           <motion.div
-            initial={{ opacity: 0, height: 0, y: -20 }}
-            animate={{ opacity: 1, height: '100vh', y: 0 }}
-            exit={{ opacity: 0, height: 0, y: -20 }}
-            className="fixed inset-0 top-0 left-0 right-0 z-60 lg:hidden bg-slate-900/95 backdrop-blur-xl overflow-y-auto"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            onClick={() => setIsOpen(false)}
+            className="fixed inset-0 z-140 bg-slate-900/60 backdrop-blur-sm lg:hidden"
+          />
+          
+          {/* Compact Side Drawer */}
+          <motion.div
+            initial={{ x: '100%' }}
+            animate={{ x: 0 }}
+            exit={{ x: '100%' }}
+            transition={{ type: 'spring', damping: 25, stiffness: 200 }}
+            className="fixed top-0 right-0 bottom-0 w-70 z-150 bg-white shadow-2xl lg:hidden flex flex-col"
           >
-
-            <div className="flex flex-col min-h-screen p-8 pt-24 gap-8">
+            <div className="p-5 flex items-center justify-between border-b border-slate-100">
+              <div className="flex items-center gap-2">
+                <img src={logo} alt="Logo" className="w-8 h-8 object-contain" />
+                <div className="flex flex-col">
+                  <span className="text-sm font-black text-slate-900 tracking-tight leading-none">CRCCF</span>
+                  <span className="text-[7px] font-bold text-slate-500 uppercase tracking-wider mt-0.5">Foundation</span>
+                </div>
+              </div>
               <button 
                 onClick={() => setIsOpen(false)}
-                className="absolute top-8 right-6 p-2 rounded-full bg-white/10 text-white"
+                className="p-2 rounded-lg bg-slate-50 text-slate-500 hover:text-slate-900 transition-colors"
               >
-                <X className="w-8 h-8" />
+                <X className="w-5 h-5" />
               </button>
-              {navLinks.map((link, index) => (
-                <motion.a
-                  key={link.name}
-                  initial={{ opacity: 0, x: -30 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.05 + 0.1 }}
-                  href={link.href}
-                  className="text-3xl font-display font-black text-white hover:text-indigo-400 transition-colors flex items-center justify-between group"
-                  onClick={() => setIsOpen(false)}
-                >
-                  <span className="relative">
-                    {link.name}
-                    <span className="absolute -bottom-2 left-0 w-0 h-1 bg-indigo-500 transition-all group-hover:w-full" />
-                  </span>
-                  <ChevronRight className="w-8 h-8 opacity-50 group-hover:opacity-100 transition-opacity" />
-                </motion.a>
-              ))}
-              
-              <div className="mt-auto pt-8 border-t border-white/10">
-                <a
-                  href="#report"
-                  className="block w-full py-5 bg-[#FF0000] text-white text-center rounded-2xl text-lg font-black uppercase tracking-widest shadow-[0_10px_30px_rgba(255,0,0,0.3)]"
-                  onClick={() => setIsOpen(false)}
-                >
-                  Report Crime
-                </a>
-              </div>
+            </div>
+
+            <div className="flex-1 overflow-y-auto py-4 px-3">
+              <nav className="flex flex-col gap-1">
+                {navLinks.map((link, index) => (
+                  <motion.a
+                    key={link.name}
+                    initial={{ opacity: 0, x: 20 }}
+                    animate={{ opacity: 1, x: 0 }}
+                    transition={{ delay: index * 0.03 }}
+                    href={link.href}
+                    className="flex items-center justify-between px-4 py-3 rounded-xl hover:bg-indigo-50 text-slate-600 hover:text-indigo-600 font-bold text-sm transition-all group"
+                    onClick={() => setIsOpen(false)}
+                  >
+                    <span>{link.name}</span>
+                    <ChevronRight className="w-4 h-4 opacity-0 group-hover:opacity-100 -translate-x-2 group-hover:translate-x-0 transition-all" />
+                  </motion.a>
+                ))}
+              </nav>
+            </div>
+
+            <div className="p-5 border-t border-slate-100 bg-slate-50/50">
+              <a
+                href="#report"
+                className="relative overflow-hidden group block w-full py-3 bg-[#FF0000] text-white text-center rounded-xl text-xs font-black uppercase tracking-widest shadow-lg shadow-red-600/30 active:scale-95 transition-all mb-3"
+                onClick={() => setIsOpen(false)}
+              >
+                <span className="relative z-10">Report Crime</span>
+                <div className="absolute inset-0 -translate-x-full animate-shimmer bg-linear-to-r from-transparent via-white/30 to-transparent w-1/2" />
+              </a>
+              <p className="text-[9px] text-center text-slate-400 font-medium">
+                © 2024 CR Cyber Crime Foundation
+              </p>
             </div>
           </motion.div>
-        )}
-      </AnimatePresence>
-    </header>
+        </>
+      )}
+    </AnimatePresence>
+  </>
   );
 }

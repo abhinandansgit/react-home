@@ -40,9 +40,55 @@ const steps = [
 
 export function ProcessTimeline() {
   const [hoveredStep, setHoveredStep] = React.useState(0);
+  const [mousePos, setMousePos] = React.useState({ x: 0, y: 0 });
+  const sectionRef = React.useRef(null);
+
+  const handleMouseMove = (e) => {
+    if (!sectionRef.current) return;
+    const rect = sectionRef.current.getBoundingClientRect();
+    setMousePos({
+      x: e.clientX - rect.left,
+      y: e.clientY - rect.top
+    });
+  };
 
   return (
-    <section className="py-12 bg-slate-50 relative">
+    <section 
+      ref={sectionRef}
+      onMouseMove={handleMouseMove}
+      className="py-12 bg-slate-50 relative overflow-hidden group/section"
+    >
+      {/* Cursor Responsive Background Elements */}
+      <div className="absolute inset-0 pointer-events-none overflow-hidden">
+        <motion.div
+          animate={{
+            x: (mousePos.x - 500) * 0.05,
+            y: (mousePos.y - 300) * 0.05,
+          }}
+          transition={{ type: "spring", damping: 30, stiffness: 100 }}
+          className="absolute top-1/4 left-1/4 w-125 h-125 bg-indigo-200/20 rounded-full blur-[120px]"
+        />
+        <motion.div
+          animate={{
+            x: (mousePos.x - 500) * -0.05,
+            y: (mousePos.y - 300) * -0.05,
+          }}
+          transition={{ type: "spring", damping: 30, stiffness: 100 }}
+          className="absolute bottom-1/4 right-1/4 w-100 h-100 bg-blue-200/20 rounded-full blur-[100px]"
+        />
+        
+        {/* Interactive Grid Dots */}
+        <motion.div 
+          animate={{
+            x: (mousePos.x - 500) * 0.01,
+            y: (mousePos.y - 300) * 0.01,
+          }}
+          className="absolute inset-0 opacity-[0.05] mask-[radial-gradient(circle_at_center,white,transparent)]"
+        >
+          <div className="absolute inset-0 bg-[radial-gradient(#4f46e5_1px,transparent_1px)] bg-size-[32px_32px]" />
+        </motion.div>
+      </div>
+
       <div className="container mx-auto px-6 md:px-12">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-sm font-bold text-indigo-600 uppercase tracking-widest mb-2">Our Process</h2>

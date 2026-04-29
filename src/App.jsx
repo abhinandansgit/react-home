@@ -18,8 +18,10 @@ import './App.css';
 function App() {
   return (
     <div className="min-h-screen bg-slate-50 selection:bg-indigo-500 selection:text-white">
-      <AwarenessTicker />
-      <Navbar />
+      <div className="fixed top-0 left-0 right-0 z-[100]">
+        <AwarenessTicker />
+        <Navbar />
+      </div>
       <main>
         <Hero />
         <TrustBar />

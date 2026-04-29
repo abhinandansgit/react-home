@@ -12,7 +12,7 @@ const messages = [
 
 export function AwarenessTicker() {
   return (
-    <div className="fixed top-0 left-0 right-0 h-8 bg-slate-900 text-white/70 flex items-center border-b border-white/5 z-60 overflow-hidden">
+    <div className="relative h-8 bg-slate-900 text-white/70 flex items-center border-b border-white/5 overflow-hidden">
       <div className="flex-1 overflow-hidden relative flex items-center h-full">
         <motion.div
           animate={{ x: ["0%", "-50%"] }}
@@ -33,16 +33,16 @@ export function AwarenessTicker() {
       </div>
 
       {/* Right Corner Actions */}
-      <div className="flex items-center h-full px-4 gap-4 bg-slate-900 shadow-[-20px_0_30px_#0f172a] z-10">
-        <button className="hover:text-white transition-colors cursor-pointer">
+      <div className="flex items-center h-full px-2 md:px-4 gap-2 md:gap-4 bg-slate-900 shadow-[-20px_0_30px_#0f172a] z-10">
+        <button className="hidden sm:block hover:text-white transition-colors cursor-pointer">
           <HelpCircle className="w-3.5 h-3.5" />
         </button>
         <a 
           href="https://abhi-crccf.netlify.app/" 
-          className="flex items-center gap-2 px-3 py-1 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-all shadow-lg shadow-blue-600/20 active:scale-95 group"
+          className="flex items-center gap-1.5 md:gap-2 px-2.5 md:px-3 py-1 bg-blue-600 hover:bg-blue-700 text-white rounded-md transition-all shadow-lg shadow-blue-600/20 active:scale-95 group"
         >
           <Globe className="w-3 h-3 group-hover:rotate-12 transition-transform" />
-          <span className="text-[10px] font-black uppercase tracking-wider">Reach Us</span>
+          <span className="text-[9px] md:text-[10px] font-black uppercase tracking-wider">Reach Us</span>
         </a>
       </div>
     </div>
